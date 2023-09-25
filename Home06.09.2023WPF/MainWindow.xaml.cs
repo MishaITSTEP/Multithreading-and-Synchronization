@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace _06._09._2023Wpf
+namespace Home06._09._2023WPF
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -10,13 +10,6 @@ namespace _06._09._2023Wpf
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            for(int i = 0; i <= 50; i++)
-
-                lb2.Items.Add(i.ToString());
         }
     }
 }

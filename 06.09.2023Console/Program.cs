@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-
-namespace _06._09._2023
+﻿namespace _06._09._2023
 {
     public class Program
     {
@@ -30,25 +28,25 @@ namespace _06._09._2023
         }
         static void Method1()
         {
-            for (int i = 0; i <= 50; i++)
+            for(int i = 0; i <= 50; i++)
                 Console.WriteLine(i);
         }
 
         static void Method2(object range)
         {
             var r = (THRange)range;
-            for (int i = r.start; i <= r.end; i++)
+            for(int i = r.start; i <= r.end; i++)
                 Console.WriteLine(i);
         }
         static void Method3(object range)
         {
             var r = (THRangeAndCount)range;
-            if (r.count != 0)
+            if(r.count != 0)
             {
                 Thread th = new Thread(Method3);
                 th.Start((new THRangeAndCount(r.start, r.end, r.count - 1)));
             }
-            for (int i = r.start; i <= r.end; i++)
+            for(int i = r.start; i <= r.end; i++)
             {
                 Thread.Sleep(10);
                 Console.WriteLine(i);
@@ -60,45 +58,45 @@ namespace _06._09._2023
         static void Method4Avg(object array) => Console.WriteLine((array as List<int>)?.Average() ?? 0);
         private static void Main(string[] args)
         {
-            switch (int.Parse(Console.ReadLine()))
+            switch(int.Parse(Console.ReadLine()))
             {
                 case 1:
-                    new Thread(Method1).Start();
-                    break;
+                new Thread(Method1).Start();
+                break;
                 case 2:
-                    new Thread(Method2).Start((new THRange(0, 50)));
-                    break;
+                new Thread(Method2).Start((new THRange(0, 50)));
+                break;
                 case 3:
-                    new Thread(Method3).Start((new THRangeAndCount(0, 50, 5)));
-                    break;
+                new Thread(Method3).Start((new THRangeAndCount(0, 50, 5)));
+                break;
                 case 4:
-                    {
-                        Thread[] threads =
-           {
+                {
+                    Thread[] threads =
+       {
                 new Thread(Method4Max),
                 new Thread(Method4Min),
                 new Thread(Method4Avg)
             };
-                        var arr = Enumerable.Range(0, 10000);
-                        foreach (var item in threads)
-                            item.Start(arr);
-                    }
-                    break;
+                    var arr = Enumerable.Range(0, 10000);
+                    foreach(var item in threads)
+                        item.Start(arr);
+                }
+                break;
                 case 5:
-                    {
-                    }
-                    break;
+                {
+                }
+                break;
                 case 6:
-                    {
-                    }
-                    break;
+                {
+                }
+                break;
                 case 7:
-                    {
-                    }
-                    break;
+                {
+                }
+                break;
 
                 default:
-                    break;
+                break;
             }
         }
     }

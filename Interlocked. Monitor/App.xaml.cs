@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 
-namespace _06._09._2023Wpf
+namespace Interlock
 {
     /// <summary>
-    /// Interaction logic for App.xaml
+    /// Логика взаимодействия для App.xaml
     /// </summary>
     public partial class App:Application
     {

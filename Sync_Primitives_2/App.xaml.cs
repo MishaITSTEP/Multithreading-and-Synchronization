@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace _06._09._2023Wpf
+namespace Sync_Primitives_2
 {
     /// <summary>
     /// Interaction logic for App.xaml
