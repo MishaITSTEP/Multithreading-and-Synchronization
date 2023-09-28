@@ -5,8 +5,67 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Home06._09._2023WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        SizeToContent="WidthAndHeight"
+        MinWidth="300"
+        Title="MainWindow"
+        >
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
 
-    </Grid>
+    <Window.Resources>
+        <Style TargetType="{x:Type UniformGrid}">
+            <Setter Property="Rows" Value="1"/>
+        </Style>
+    </Window.Resources>
+    <DockPanel>
+
+        <ProgressBar DockPanel.Dock="Bottom" Height="20" Value="{Binding Progress,Mode=OneWay}"/>
+        <StackPanel DockPanel.Dock="Top">
+            <TextBlock Text="MillisecondsTimeout: "/>
+            <TextBox Text="{Binding TimeSleep,UpdateSourceTrigger=PropertyChanged}"/>
+        </StackPanel>
+        <StackPanel>
+                    <UniformGrid>
+
+                        <UniformGrid>
+                            <StackPanel>
+                                <TextBlock Text="First: "/>
+                                <TextBox Text="{Binding First,UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                        </UniformGrid>
+
+                        <UniformGrid>
+                            <StackPanel>
+                                <TextBlock Text="End: "/>
+                                <TextBox Text="{Binding End,UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                        </UniformGrid>
+
+                        <UniformGrid>
+                            <StackPanel>
+                                <TextBlock Text="Prime: "/>
+                                <TextBlock Text="{Binding Prime,UpdateSourceTrigger=PropertyChanged}"/>
+                                <ProgressBar Height="20" Value="{Binding ProgressPrime,Mode=OneWay}"/>
+                                <CheckBox IsChecked="{Binding IsEmpty_Prime,UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                        </UniformGrid>
+
+                        <UniformGrid>
+                            <StackPanel>
+                                <TextBlock Text="Fibonachi: "/>
+                                <TextBlock Text="{Binding Fibonachi,UpdateSourceTrigger=PropertyChanged}"/>
+                                <ProgressBar Height="20" Value="{Binding ProgressFibo,Mode=OneWay}"/>
+                                <CheckBox IsChecked="{Binding IsEmpty_Fibo,UpdateSourceTrigger=PropertyChanged}"/>
+                            </StackPanel>
+                        </UniformGrid>
+                <TextBlock Text="{Binding ProgressPrime}"/>
+                <TextBlock Text="{Binding ProgressFibo}"/>
+                <TextBlock Text="{Binding Progress}"/>
+            </UniformGrid>
+                    <Button Content="Start" Click="Start"/>
+                    <Button Content="ForseSpop" Click="ForseStop" IsEnabled="{Binding IsFull}"/>
+                    <Button Content="Replay" Click="Replay"/>
+                </StackPanel>
+    </DockPanel>
 </Window>

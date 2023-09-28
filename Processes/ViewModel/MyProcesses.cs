@@ -46,7 +46,10 @@ namespace TaskManeger
         public void Update()
         {
             Complete=0;
-            var NewColl = new ObservableCollection<MyProcess>(Process.GetProcesses().Take(Count).Select(x => new MyProcess(x)));
+            var NewColl = new ObservableCollection<MyProcess>(
+                Count<0
+                ? Process.GetProcesses().Select(x => new MyProcess(x))
+                : Process.GetProcesses().Take(Count).Select(x => new MyProcess(x)));
             Proc=NewColl;
             Inner++;
         }

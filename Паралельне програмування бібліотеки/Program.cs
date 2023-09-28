@@ -29,7 +29,7 @@
         int min = 1;
         int max = 10;
         File.Delete(strings);
-        using(StreamWriter writer = new(strings, true))
+        using (StreamWriter writer = new(strings, true))
         {
             Parallel.For(min, max, (x) =>
             {
@@ -42,17 +42,17 @@
         #region 4
         string string1 = "Text1.txt";
         File.Delete(string1);
-        using(StreamWriter writer = new(string1, true))
+        using (StreamWriter writer = new(string1, true))
         {
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
                 writer.WriteLine(i);
             }
         }
 
-        if(!File.Exists(string1))
+        if (!File.Exists(string1))
             File.Create(string1);
-        using(StreamReader streamReader = new(string1))
+        using (StreamReader streamReader = new(string1))
         {
             var Chars = Enumerable.Range(char.MinValue, char.MaxValue).Select(x => (char)x).Where(x => !Char.IsDigit(x)).ToArray();
 
@@ -72,9 +72,9 @@
     }
     static void AWriteToFile(StreamWriter Path, int x)
     {
-        for(int y = 1; y <= 10; y++)
+        for (int y = 1; y <= 10; y++)
         {
-            lock(Path)
+            lock (Path)
                 Path.WriteLine($"{x}*{y} = {x * y}");
             Thread.Sleep(1);
             Console.WriteLine($"{new string('\t', x)}{x}*{y} = {x * y}");

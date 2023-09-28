@@ -11,10 +11,7 @@
         SizeToContent="WidthAndHeight"
         DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}"
         >
-
-
-
-
+    
     <StackPanel>
         <DockPanel>
             <Label VerticalAlignment="Center">Number ToFactorial:</Label>
@@ -22,39 +19,36 @@
         </DockPanel>
         <TextBox x:Name="NumberBox1" Text="{Binding value}"></TextBox>
         <Button Background="BurlyWood" DockPanel.Dock="Right" Click="Button_Click" Content="Calculate"/>
-        <ListBox x:Name="operationsList" MinHeight="100" ItemsSource="{Binding operations, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <DockPanel>
-                        <TextBlock MinWidth="100"><Run Text="{Binding Value}"/>/<Run Text="{Binding Number}"/></TextBlock>
-                        <StackPanel Width="400">
-                            <Label x:Name="Res" Content="{Binding Result}"/>
-                            <Label Content="{Binding dResult}"/>
-                            <Label Content="{Binding IsProgress}"/>
-                        </StackPanel>
-                        <TextBlock DockPanel.Dock="Right" VerticalAlignment="Center">
+       
+        <UniformGrid Rows="1" MaxHeight="400">
+            <ListBox x:Name="operationsList" MinHeight="100" ItemsSource="{Binding operations, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <TextBlock MinWidth="100"><Run Text="{Binding Value}"/>/<Run Text="{Binding Number}"/></TextBlock>
+                            <StackPanel Width="400">
+                                <Label Name="Res" Content="{Binding Result}"/>
+                            </StackPanel>
+                            <TextBlock DockPanel.Dock="Right" VerticalAlignment="Center">
                             <Run Text="{Binding Progress}"/><Run Text="%"/>
-                        </TextBlock>
-                        <ProgressBar IsHitTestVisible="True" x:Name="pr" Width="200" Foreground="Orange" Value="{Binding Progress}"/>
-                    </DockPanel>
-
-
-                    <DataTemplate.Triggers>
-                        <DataTrigger Binding="{Binding Progress}" Value="100">
-                            <Setter TargetName="pr" Property="Foreground" Value="Green"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding IsProgress}" Value="false">
-                            <Setter TargetName="pr" Property="Foreground" Value="Maroon"/>
-
-                            <Setter TargetName="Res" Property="Content" Value="{Binding dResult}"/>
-                        </DataTrigger>
-
-                        <DataTrigger Binding="{Binding IsProgress}" Value="true">
-                        </DataTrigger>
-                    </DataTemplate.Triggers>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+                            </TextBlock>
+                            <ProgressBar IsHitTestVisible="True" x:Name="pr" Width="200" Foreground="Orange" Value="{Binding Progress}"/>
+                        </DockPanel>
+                        <DataTemplate.Triggers>
+                            <DataTrigger Binding="{Binding Progress}" Value="100">
+                                <Setter TargetName="pr" Property="Foreground" Value="Green"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsProgress}" Value="false">
+                                <Setter TargetName="pr" Property="Foreground" Value="Maroon"/>
+                                <Setter TargetName="Res" Property="Content" Value="{Binding dResult}"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsProgress}" Value="true">
+                            </DataTrigger>
+                        </DataTemplate.Triggers>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+            <ListView MinHeight="30" x:Name="fff"/>
+        </UniformGrid>
     </StackPanel>
 </Window>

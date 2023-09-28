@@ -1,0 +1,83 @@
+﻿<Window x:Class="Interlock.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Interlock"
+        mc:Ignorable="d"
+        Title="{Binding AnalysisResult.Count,UpdateSourceTrigger=PropertyChanged}"
+        MinHeight="100" 
+        MinWidth="300"
+        MaxHeight="900" 
+        SizeToContent="WidthAndHeight">
+
+    <Window.DataContext>
+        <local:ViewModel/>
+    </Window.DataContext>
+
+    <DockPanel>
+        <Button DockPanel.Dock="Top" Content="Вибрати папку" Click="SelectFile_Click"/>
+
+        <ListBox ItemsSource="{Binding AnalysisResult,UpdateSourceTrigger=PropertyChanged}">
+            <ListBox.ItemTemplate>
+
+                <DataTemplate>
+                    <WrapPanel Margin="5">
+                        <TextBlock x:Name="TextBlock" Width="150" TextWrapping="Wrap">
+                            1:<Run Text="{Binding line1}"/>
+                            <LineBreak/>
+                            2:<Run Text="{Binding line1}"/>
+                            <LineBreak/>
+                            3:<Run Text="{Binding line1}"/>
+                        </TextBlock>
+
+                        <StackPanel x:Name="StackPanel" MaxWidth="1000">
+                            <DockPanel>
+                                <CheckBox x:Name="checkText" IsChecked="{Binding TextShow,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                <TextBlock Text="{Binding Path,UpdateSourceTrigger=PropertyChanged}"/>
+                            </DockPanel>
+                            <ListView ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" MaxWidth="{Binding ElementName=StackPanel,Path=Width,Mode=OneWay}">
+                                <TextBox x:Name="TextBox" Text="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" TextWrapping="NoWrap" MaxLines="20" AcceptsReturn="True"/>
+                            </ListView>
+                        </StackPanel>
+                    </WrapPanel>
+                    <DataTemplate.Triggers>
+                        <DataTrigger Binding="{Binding TextShow}" Value="false">
+                            <Setter TargetName="TextBox" Property="Text" Value=""/>
+                            <Setter TargetName="TextBlock" Property="Text">
+                                <Setter.Value>
+                                    1:
+                                    <Run Text="{Binding line1}"/>
+                                    <LineBreak/>
+                                    2:
+                                    <Run Text="{Binding line1}"/>
+                                    <LineBreak/>
+                                    3:
+                                    <Run Text="{Binding line1}"/>
+                                </Setter.Value>
+                            </Setter>
+
+
+                        </DataTrigger>
+
+                        <DataTrigger Binding="{Binding TextShow}" Value="true">
+                            <Setter TargetName="TextBox" Property="Text" Value="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                            <Setter TargetName="TextBlock" Property="Text" Value="The file size is larger than the allowable value!!!">
+                            </Setter>
+                        </DataTrigger>
+
+                        <!--<DataTrigger Binding="{Binding IsReading}" Value="true">
+                            <Setter TargetName="TextBlock" Property="Text" Value="{Binding ToString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding IsReading}" Value="false">
+                            <Setter TargetName="TextBlock" Property="Text" Value="The file size is larger than the allowable value!!!"/>
+                        </DataTrigger>-->
+
+                    </DataTemplate.Triggers>
+                </DataTemplate>
+
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </DockPanel>
+</Window>

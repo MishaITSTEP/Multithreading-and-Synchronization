@@ -1,8 +1,6 @@
 ﻿using PropertyChanged;
 using System;
-using System.Globalization;
 using System.Threading;
-using System.Windows.Data;
 
 namespace _08._09._2023WPF
 {
@@ -27,12 +25,12 @@ namespace _08._09._2023WPF
         {
             try
             {
-                if(Number <= 1)
+                if (Number <= 1)
                 {
                     Progress = 100;
                     return;
                 }
-                for(int i = 1; i <= Number; i++)
+                for (int i = 1; i <= Number; i++)
                 {
                     Thread.Sleep(50);
                     Value = i;
@@ -40,7 +38,7 @@ namespace _08._09._2023WPF
                     Progress = (int)(100f / (Number / Value));
                 }
             }
-            catch(Exception)
+            catch (Exception)
             {
                 IsProgress = false;
             }

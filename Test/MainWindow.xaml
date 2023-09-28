@@ -1,0 +1,92 @@
+﻿<Window x:Class="Test.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Test"
+        Title="MainWindow" 
+        MinHeight="300" 
+        MaxHeight="900" 
+        MinWidth="300"
+        MaxWidth="600"
+        SizeToContent="WidthAndHeight">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type UniformGrid}">
+            <Setter Property="Rows" Value="1"/>
+        </Style>
+    </Window.Resources>
+
+    <TabControl Margin="5">
+        <TabItem Name="HashCodeTab" Header="HashCode">
+            <TabItem.DataContext>
+                <local:ViewModel_HashCode/>
+            </TabItem.DataContext>
+            <StackPanel>
+                <UniformGrid>
+                    <TextBlock Text="Type"/>
+                    <TextBlock Text="Value"/>
+                    <TextBlock Text="HashCode"/>
+                </UniformGrid>
+
+                <UniformGrid>
+                    <TextBlock Text="string"/>
+                    <TextBox Text="{Binding string1,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}" TextWrapping="Wrap"/>
+                    <TextBox Text="{Binding stringHash,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                </UniformGrid>
+
+                <UniformGrid>
+                    <TextBlock Text="int"/>
+                    <TextBox Text="{Binding int1,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding intHash,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                </UniformGrid>
+
+                <UniformGrid>
+                    <TextBlock Text="long"/>
+                    <TextBox Text="{Binding long1,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding longHash,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                </UniformGrid>
+
+                <UniformGrid>
+                    <TextBlock Text="float"/>
+                    <TextBox Text="{Binding float1,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding floatHash,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                </UniformGrid>
+
+                <UniformGrid>
+                    <TextBlock Text="double"/>
+                    <TextBox Text="{Binding double1,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding doubleHash,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                </UniformGrid>
+
+                <UniformGrid>
+                    <TextBlock Text="char"/>
+                    <TextBox Text="{Binding char1,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Text="{Binding charHash,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                </UniformGrid>
+
+                <UniformGrid>
+                    <TextBlock Text="bool"/>
+                    <UniformGrid>
+                        <TextBox Text="{Binding bool1,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                        <CheckBox IsChecked="{Binding bool1,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}"/>
+                    </UniformGrid>
+                    <TextBox Text="{Binding boolHash,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                </UniformGrid>
+                
+                <DataGrid ItemsSource="{Binding values,UpdateSourceTrigger=PropertyChanged}"/>
+                
+            </StackPanel>
+
+
+
+        </TabItem>
+       
+        <TabItem>
+            <TabItem.DataContext>
+                <local:ViewModel_HashCode/>
+            </TabItem.DataContext>
+
+        </TabItem>
+    </TabControl>
+</Window>

@@ -42,17 +42,17 @@
         #region 2
         Task.Run(() =>
         {
-            for(int i = 1; i < 100; i++)
+            for (int i = 1; i < 100; i++)
             {
                 bool tf = true;
-                for(int j = 2; j < i; j++)
+                for (int j = 2; j < i; j++)
                 {
-                    if(i % j == 0)
+                    if (i % j == 0)
                     {
                         tf = false;
                     }
                 }
-                if(tf)
+                if (tf)
                 {
                     Console.WriteLine(i);
                 }
@@ -82,9 +82,9 @@
         min = Task.Run<int>(() =>
         {
             int val = arr.First();
-            foreach(var item in arr)
+            foreach (var item in arr)
             {
-                if(item < val)
+                if (item < val)
                     val = item;
             }
             return val;
@@ -94,9 +94,9 @@
         max = Task.Run<int>(() =>
         {
             int val = arr.First();
-            foreach(var item in arr)
+            foreach (var item in arr)
             {
-                if(item > val)
+                if (item > val)
                     val = item;
             }
             return val;
@@ -106,7 +106,7 @@
         var avg = Task.Run<double>(() =>
         {
             int val = 0;
-            foreach(var item in arr)
+            foreach (var item in arr)
             {
                 val += item;
             }
@@ -117,7 +117,7 @@
         var sum = Task.Run<int>(() =>
         {
             int val = 0;
-            foreach(var item in arr)
+            foreach (var item in arr)
             {
                 val += item;
             }
@@ -155,17 +155,17 @@
     {
         Min = Math.Max(1, Min);
         Max = Math.Max(Min, Max);
-        for(int i = Min; i < Max; i++)
+        for (int i = Min; i < Max; i++)
         {
             bool tf = true;
-            for(int j = 2; j < i; j++)
+            for (int j = 2; j < i; j++)
             {
-                if(i % j == 0)
+                if (i % j == 0)
                 {
                     tf = false;
                 }
             }
-            if(tf)
+            if (tf)
             {
                 Console.WriteLine(i);
             }
