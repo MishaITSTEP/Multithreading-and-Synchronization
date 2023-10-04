@@ -17,7 +17,7 @@ namespace _08._09._2023WPF
         public double dResult { get; set; } = 1;//end
         public Factorial(int number)
         {
-            Number = number;
+            Number=number;
             ThreadPool.QueueUserWorkItem(FindFactorial);
         }
 
@@ -25,22 +25,21 @@ namespace _08._09._2023WPF
         {
             try
             {
-                if (Number <= 1)
+                if(Number<=1)
                 {
-                    Progress = 100;
+                    Progress=100;
                     return;
                 }
-                for (int i = 1; i <= Number; i++)
+                for(int i = 1; i<=Number; i++)
                 {
                     Thread.Sleep(50);
-                    Value = i;
-                    Result *= i;
-                    Progress = (int)(100f / (Number / Value));
+                    Value=i;
+                    Result*=i;
+                    Progress=(int)(100f/(Number/Value));
                 }
-            }
-            catch (Exception)
+            } catch(Exception)
             {
-                IsProgress = false;
+                IsProgress=false;
             }
         }
 

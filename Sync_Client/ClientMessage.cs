@@ -7,7 +7,7 @@ namespace Sync_Client
     {
         public ClientMessage(string message)
         {
-            this.message = message;
+            this.message=message;
         }
 
         public string message { get; set; }

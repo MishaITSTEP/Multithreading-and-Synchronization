@@ -58,19 +58,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sync_Client", "Sync_Client\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sync_Server", "Sync_Server\Sync_Server.csproj", "{92C00953-C2C8-4F3D-B467-BCFB1EB1D45E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Create Random Folders and Files", "Create Random Folders and Files\Create Random Folders and Files.csproj", "{38D84DC6-D9EF-43C5-BC23-7B99E49FF121}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Create Random Folders and Files", "Create Random Folders and Files\Create Random Folders and Files.csproj", "{38D84DC6-D9EF-43C5-BC23-7B99E49FF121}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "27.09.2023", "27.09.2023", "{03683110-C58B-4C70-92B9-ECFD8F34DE3E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Class", "Class", "{A19F1D0E-41EE-4197-8D27-B21FFFA0A6B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test VIN", "Test VIN\Test VIN.csproj", "{26650504-8A18-44E9-91F8-145A1C8ACF32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test VIN", "Test VIN\Test VIN.csproj", "{26650504-8A18-44E9-91F8-145A1C8ACF32}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VIN Server", "VIN Server\VIN Server.csproj", "{4BFF910C-0F05-414D-9A05-068381E093EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIN Server", "VIN Server\VIN Server.csproj", "{4BFF910C-0F05-414D-9A05-068381E093EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shared_data", "..\..\..\repos\Network-Sockets-TCP\shared_data\shared_data.csproj", "{CE5833C5-2DED-471C-8331-8FD2782ED2C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shared_data", "..\Network-Sockets-TCP\shared_data\shared_data.csproj", "{CE5833C5-2DED-471C-8331-8FD2782ED2C9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VIN_Automobile", "VIN_Automobile\VIN_Automobile.csproj", "{4C9BBFEB-0102-4566-B54F-F054BEAB66A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Паралельне програмування", "Паралельне програмування\Паралельне програмування.csproj", "{34D35D8E-B1F9-415C-93AB-6FC45D9C50FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -142,6 +144,10 @@ Global
 		{4C9BBFEB-0102-4566-B54F-F054BEAB66A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C9BBFEB-0102-4566-B54F-F054BEAB66A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C9BBFEB-0102-4566-B54F-F054BEAB66A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34D35D8E-B1F9-415C-93AB-6FC45D9C50FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34D35D8E-B1F9-415C-93AB-6FC45D9C50FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34D35D8E-B1F9-415C-93AB-6FC45D9C50FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34D35D8E-B1F9-415C-93AB-6FC45D9C50FD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -171,6 +177,7 @@ Global
 		{4BFF910C-0F05-414D-9A05-068381E093EA} = {A19F1D0E-41EE-4197-8D27-B21FFFA0A6B9}
 		{CE5833C5-2DED-471C-8331-8FD2782ED2C9} = {A19F1D0E-41EE-4197-8D27-B21FFFA0A6B9}
 		{4C9BBFEB-0102-4566-B54F-F054BEAB66A3} = {A19F1D0E-41EE-4197-8D27-B21FFFA0A6B9}
+		{34D35D8E-B1F9-415C-93AB-6FC45D9C50FD} = {52A81FFC-B7DF-429A-A54C-106ABF836AC4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BA05B022-6A40-40B5-81BB-40C16BCCFC56}

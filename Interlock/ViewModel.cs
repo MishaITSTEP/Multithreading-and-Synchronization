@@ -15,33 +15,32 @@ namespace Interlock
         public int A { get; set; } = 0;
         public ViewModel()
         {
-            SelectFile_Click(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+            //SelectFile_Click(Environment.GetFolderPath(Environment.SpecialFolder.Desktop));
+            SelectFile_Click(@"C:\");
         }
 
         public void SelectFile_Click(string path = null)
         {
             Monitor.Enter(this);
             FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            if (string.IsNullOrEmpty(path))
+            if(string.IsNullOrEmpty(path))
             {
-                if (folderBrowserDialog.ShowDialog() != DialogResult.OK)
+                if(folderBrowserDialog.ShowDialog()!=DialogResult.OK)
                     return;
-            }
-            else
+            } else
             {
-                folderBrowserDialog.SelectedPath = path;
+                folderBrowserDialog.SelectedPath=path;
             }
             AnalysisResult.Clear();
 
 
-            foreach (var item in Directory.GetFiles(folderBrowserDialog.SelectedPath, "*.*"))
+            foreach(var item in Directory.GetFiles(folderBrowserDialog.SelectedPath,"*.*"))
             {
                 try
                 {
                     var a = new AnalysisResult(item);
                     AnalysisResult.Add(a);
-                }
-                catch (Exception e) { MessageBox.Show(e.Message); }
+                } catch(Exception e) { MessageBox.Show(e.Message); }
             }
             Monitor.Exit(this);
         }

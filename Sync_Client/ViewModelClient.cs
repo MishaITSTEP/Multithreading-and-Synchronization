@@ -24,20 +24,20 @@ namespace Sync_Client
         {
             try
             {
-                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
+                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address),port);
 
-                EndPoint remoteIpPoint = new IPEndPoint(IPAddress.Any, 0);
+                EndPoint remoteIpPoint = new IPEndPoint(IPAddress.Any,0);
 
                 // IP4 samples: 123.5.6.3    0.0.255.255    10.7.123.184
-                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+                Socket socket = new Socket(AddressFamily.InterNetwork,SocketType.Dgram,ProtocolType.Udp);
                 string message = "";
-                while (message != "end")
+                while(message!="end")
                 {
                     Console.Write("Enter a message: ");
-                    message = Console.ReadLine();
+                    message=Console.ReadLine();
                     byte[] data = Encoding.Unicode.GetBytes(message);
 
-                    socket.SendTo(data, ipPoint);
+                    socket.SendTo(data,ipPoint);
 
                     // при використанні UDP протоколу, Connect() лише встановлює дані для відправки
                     //socket.Connect(ipPoint);
@@ -46,23 +46,27 @@ namespace Sync_Client
                     // получаем ответ получаем сообщение
                     int bytes = 0;
                     string response = "";
-                    data = new byte[1024]; // 1KB
+                    data=new byte[1024]; // 1KB
                     do
                     {
-                        bytes = socket.ReceiveFrom(data, ref remoteIpPoint);
-                        response += Encoding.Unicode.GetString(data, 0, bytes);
-                    } while (socket.Available > 0);
+                        bytes=socket.ReceiveFrom(data,ref remoteIpPoint);
+                        response+=Encoding.Unicode.GetString(data,0,bytes);
+                    } while(socket.Available>0);
 
-                    Console.WriteLine("server response: " + response);
+                    Console.WriteLine("server response: "+response);
                 }
                 // закрываем сокет
                 socket.Shutdown(SocketShutdown.Both);
                 socket.Close();
-            }
-            catch (Exception ex)
+            } catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        internal void Send()
+        {
+            throw new NotImplementedException();
         }
     }
 }

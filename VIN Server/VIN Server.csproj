@@ -8,9 +8,5 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\repos\Network-Sockets-TCP\shared_data\shared_data.csproj" />
-  </ItemGroup>
-
 
 </Project>

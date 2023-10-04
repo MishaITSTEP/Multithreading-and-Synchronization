@@ -1,8 +1,6 @@
 ﻿using PropertyChanged;
-using SharedData;
 using System;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -22,10 +20,10 @@ namespace VIN_Automobile
         {
             try
             {
-                IsBlock = true;
+                IsBlock=true;
 
 
-                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address), port);
+                IPEndPoint ipPoint = new IPEndPoint(IPAddress.Parse(address),port);
                 TcpClient client = new TcpClient();
                 client.Connect(ipPoint);
 
@@ -37,29 +35,25 @@ namespace VIN_Automobile
 
                     // серіалізація об'єкта та відправка його
                     BinaryFormatter formatter = new BinaryFormatter();
-                    formatter.Serialize(ns, Request);
+                    formatter.Serialize(ns,Request);
 
                     try
                     {
                         // отримуємо відповідь
                         StreamReader sr = new StreamReader(ns);
-                       
-                        Request=JsonSerializer.Deserialize<Request>(sr.ReadToEnd())??new Request() { vin=Request.vin};
-                    }
-                    catch { }
-                }
-                catch (Exception ex)
+
+                        Request=JsonSerializer.Deserialize<Request>(sr.ReadToEnd())??new Request() {  };
+                    } catch { }
+                } catch(Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }
-                finally
+                } finally
                 {
                     client.Close();
                 }
-            }
-            finally
+            } finally
             {
-                IsBlock = false;
+                IsBlock=false;
 
             }
         }

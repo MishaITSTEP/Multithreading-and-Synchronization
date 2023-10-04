@@ -1,9 +1,9 @@
 ﻿using System.Windows;
 
-namespace Interlock
+namespace Паралельне_програмування
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow:Window
     {
@@ -14,9 +14,9 @@ namespace Interlock
             this.DataContext=this.ViewModel;
         }
 
-        private void SelectFile_Click(object sender,RoutedEventArgs e)
+        private void AnalisisButton_Click(object sender,RoutedEventArgs e)
         {
-            ViewModel.SelectFile_Click();
+            ViewModel.Analis();
         }
     }
 }

@@ -11,9 +11,4 @@
     <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\repos\Network-Sockets-TCP\shared_data\shared_data.csproj" />
-  </ItemGroup>
-
-
 </Project>

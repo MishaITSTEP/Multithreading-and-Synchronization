@@ -6,9 +6,8 @@
         xmlns:local="clr-namespace:Interlock"
         mc:Ignorable="d"
         Title="{Binding AnalysisResult.Count,UpdateSourceTrigger=PropertyChanged}"
-        MinHeight="100" 
+        MinHeight="200" 
         MinWidth="300"
-        MaxHeight="900" 
         SizeToContent="WidthAndHeight">
 
     <Window.DataContext>
@@ -23,17 +22,11 @@
 
                 <DataTemplate>
                     <WrapPanel Margin="5">
-                        <TextBlock x:Name="TextBlock" Width="150" TextWrapping="Wrap">
-                            1:<Run Text="{Binding line1}"/>
-                            <LineBreak/>
-                            2:<Run Text="{Binding line1}"/>
-                            <LineBreak/>
-                            3:<Run Text="{Binding line1}"/>
-                        </TextBlock>
+                        <TextBlock x:Name="TextBlock" Width="200" TextWrapping="Wrap" Text="{Binding ToString,UpdateSourceTrigger=PropertyChanged,Mode=OneWay}"/>
 
                         <StackPanel x:Name="StackPanel" MaxWidth="1000">
                             <DockPanel>
-                                <CheckBox x:Name="checkText" IsChecked="{Binding TextShow,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                                <CheckBox IsChecked="{Binding TextShow,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
                                 <TextBlock Text="{Binding Path,UpdateSourceTrigger=PropertyChanged}"/>
                             </DockPanel>
                             <ListView ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" MaxWidth="{Binding ElementName=StackPanel,Path=Width,Mode=OneWay}">
@@ -44,34 +37,20 @@
                     <DataTemplate.Triggers>
                         <DataTrigger Binding="{Binding TextShow}" Value="false">
                             <Setter TargetName="TextBox" Property="Text" Value=""/>
-                            <Setter TargetName="TextBlock" Property="Text">
-                                <Setter.Value>
-                                    1:
-                                    <Run Text="{Binding line1}"/>
-                                    <LineBreak/>
-                                    2:
-                                    <Run Text="{Binding line1}"/>
-                                    <LineBreak/>
-                                    3:
-                                    <Run Text="{Binding line1}"/>
-                                </Setter.Value>
-                            </Setter>
-
-
                         </DataTrigger>
 
                         <DataTrigger Binding="{Binding TextShow}" Value="true">
                             <Setter TargetName="TextBox" Property="Text" Value="{Binding Text,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
-                            <Setter TargetName="TextBlock" Property="Text" Value="The file size is larger than the allowable value!!!">
-                            </Setter>
                         </DataTrigger>
 
-                        <!--<DataTrigger Binding="{Binding IsReading}" Value="true">
-                            <Setter TargetName="TextBlock" Property="Text" Value="{Binding ToString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" />
+                        <DataTrigger Binding="{Binding IsReading}" Value="true">
+                            <Setter TargetName="TextBlock" Property="Text" Value="{Binding ToString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
                         </DataTrigger>
+
                         <DataTrigger Binding="{Binding IsReading}" Value="false">
-                            <Setter TargetName="TextBlock" Property="Text" Value="The file size is larger than the allowable value!!!"/>
-                        </DataTrigger>-->
+                            <Setter TargetName="TextBlock" Property="Text" Value="{Binding Error,UpdateSourceTrigger=PropertyChanged}"/>
+                            <Setter TargetName="StackPanel" Property="IsEnabled" Value="false" />
+                        </DataTrigger>
 
                     </DataTemplate.Triggers>
                 </DataTemplate>
